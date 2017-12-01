@@ -17,11 +17,11 @@ def load_data(dirn):
 
 if __name__ == '__main__':
 	mnist = load_data('./MNIST_data')
+	mlp = MLP()
 	# tensorflow placeholders
 	x = tf.placeholder(tf.float32, [None, 784])
 	y_ = tf.placeholder(tf.float32, [None, 10])
 	# define TF graph
-	mlp = MLP()
 	y_pred = mlp(x)
 	loss = tf.losses.softmax_cross_entropy(y_, y_pred)
 	train_step = tf.train.AdagradOptimizer(0.05).minimize(loss)
